@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/register'
+import AboutPage from './pages/About'
+import ContactPage from './pages/Contact'
 import { ToastContainer } from 'react-toastify'
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
 
       <Route path='' index element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/About' element={<AboutPage />} />
+      <Route path='/Contact' element={<ContactPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
     </Routes>
