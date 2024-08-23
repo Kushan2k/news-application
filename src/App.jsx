@@ -7,6 +7,7 @@ import RegisterPage from './pages/register'
 import AboutPage from './pages/About'
 import ContactPage from './pages/Contact'
 import { ToastContainer } from 'react-toastify'
+import News from './pages/News'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,8 +17,9 @@ function App() {
 
       <Route path='' index element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
-      <Route path='/About' element={<AboutPage />} />
-      <Route path='/Contact' element={<ContactPage />} />
+      <Route path='/about' element={<AboutPage />} />
+      <Route path='/news/:newsID' element={<News />} />
+      <Route path='/contact' element={<ContactPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
     </Routes>

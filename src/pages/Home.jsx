@@ -1,17 +1,22 @@
 import React from 'react'
+import Catagories from '../components/catagories'
+import NewsBox from '../components/news-box'
+import FavoriteBox from '../components/fav-box'
 
 function HomePage() {
   return (
-    <div className="p-5 mt-5 flex w-full flex-col md:flex-row">
-      <div className='md:w-1/6'>
-        <h1 className="text-3xl font-semibold uppercase">Categories</h1>
+    <div className="p-5 grid grid-cols-1 md:grid-cols-5 mt-5 gap-5 ">
+
+      <div className=''>
+        <Catagories />
       </div>
-      <div className='md:w-1/2'>
-        <h1 className="text-3xl font-semibold uppercase text-center">Feed</h1>
+      <div className='md:col-span-4 lg:col-span-3'>
+        <NewsBox />
       </div>
-      <div className='md:w-2/6'>
-        <h1 className="text-3xl font-semibold uppercase text-end">Related</h1>
+      <div className='hidden lg:flex'>
+        <FavoriteBox />
       </div>
+
     </div>
   )
 }
