@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase.config'
 
 function Navbar() {
 
@@ -12,6 +14,14 @@ function Navbar() {
   useEffect(() => {
 
     const user = JSON.parse(localStorage.getItem('user'))
+
+    onAuthStateChanged(auth, (user) => {
+
+      if (user) {
+        SetLoggedIn(true)
+        return
+      }
+    })
 
 
     if (user) {

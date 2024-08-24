@@ -2,6 +2,15 @@
 import React from 'react'
 import ListItem from './cat-item'
 
+const categories = [
+  { title: "Business", id: 1 },
+  { title: "Entertainment", id: 2 },
+  { title: "General", id: 3 },
+  { title: "Health", id: 4 },
+  { title: "Science", id: 5 },
+  { title: "Sports", id: 6 },
+  { title: "Technology", id: 7 }
+];
 function Catagories() {
   return (
     <div className="flex flex-col">
@@ -14,11 +23,12 @@ function Catagories() {
       </div>
       <div className="w-full mt-5">
         <ul className="space-y-3">
-          <ListItem cat={{ id: 123, text: "It is a long established fact reader" }} />
-          <ListItem cat={{ text: "It is a long established fact reader", id: 3435 }} />
-          <ListItem cat={{ text: "The point of using Lorem Ipsum", id: 5454 }} />
-          <ListItem cat={{ text: "There are many variations of passages", id: 898 }} />
-          <ListItem cat={{ text: "If you are going to use a of Lorem", id: 5643 }} />
+          {
+            categories.map((cat, index) => {
+              return <ListItem key={index} cat={cat} />
+            })
+          }
+
         </ul>
       </div>
 
