@@ -1,73 +1,72 @@
-import { useEffect } from 'react'
+import React from "react";
+import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import "../contact.css";
 
-// function ContactPage() {
-//   return (
-//     <div>
-//       contact us
-//     </div>
-//   )
-// }
+const Contact = () => {
+  const { register, handleSubmit, reset } = useForm();
 
-// export default ContactPage
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link, } from 'react-router-dom'
-import '../App.css';
+  const onSubmit = async (data) => {
+    data.access_key = "eff4f9b0-bc7b-4b46-8af0-05b507b2c852";
 
-function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
-      alert('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('There was an error sending your message!', error);
+    if (res.success) {
+      toast.info("Your message is sent!");
+      reset(); // Reset form fields after successful submission
+    } else {
+      toast.error("Failed to send message.");
     }
   };
 
-  return (
-    <div className="contact-container">
-      <div className="contact-image">
-        <img 
-         src="https://depositphotos.com/photo/selective-focus-cheerful-blonde-operator-headset-looking-camera-285780842.html"
-         loading='lazy' 
-         alt="Contact" 
-         className='contact-page'/>
-      </div>
-      <div className="contact-form">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name:</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-          </div>
-          <div>
-            <label>Email:</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          </div>
-          <div>
-            <label>Message:</label>
-            <textarea name="message" value={formData.message} onChange={handleChange} required />
-          </div>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </div>
-  );
-}
+  const handleButtonClick = () => {
+    toast.info("Your message is being sent...");
+  };
 
-export default ContactPage;
+  return (
+    <section className="contacts">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Contact Form</h2>
+        <div className="input-box">
+          <label>Full Name</label>
+          <input
+            type="text"
+            name="name"
+            className="field"
+            placeholder="Enter your name"
+            {...register("name", { required: true })}
+          />
+        </div>
+        <div className="input-box">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            className="field"
+            placeholder="Enter your email"
+            {...register("email", { required: true })}
+          />
+        </div>
+        <div className="input-box">
+          <label>Your message</label>
+          <textarea
+            name="message"
+            className="field mess"
+            placeholder="Enter your message"
+            {...register("message", { required: true })}
+          ></textarea>
+        </div>
+        <button type="submit" onClick={handleButtonClick}>Send Message</button>
+      </form>
+    </section>
+  );
+};
+
+export default Contact;
