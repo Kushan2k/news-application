@@ -3,17 +3,17 @@
     justify-content: center;
     align-items: center;
     min-height: auto;
-    background: blue;
+    background: rgb(233, 233, 238);
 }
 
 form {
     max-width: 600px;
-    width: 100%;
+    width: 50%;
     background: white;
     padding: 25px 25px 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px;
-    color: brown;
+    color: black;
     margin: 25px;
 }
 form h2 {
@@ -39,7 +39,7 @@ form .input-box {
     margin-top: 20px;
 }
 .input-box .field.mess {
-    height: 200px;
+    height: 50px;
     resize: none;
 
 }
