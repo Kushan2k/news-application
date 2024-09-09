@@ -11,17 +11,14 @@ import News from './pages/News'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <Routes >
-
       <Route path='' index element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/about' element={<AboutPage />} />
       <Route path='/news/:newsID' element={<News />} />
       <Route path='/contact' element={<ContactPage />} />
       <Route path="/register" element={<RegisterPage />} />
-
     </Routes>
   )
 }
