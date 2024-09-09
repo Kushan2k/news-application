@@ -7,6 +7,7 @@
 }
 
 form {
+  
   @apply w-full md:w-1/2;
   /* max-width: 600px; */
   /* width: 50%; */
@@ -25,6 +26,7 @@ form .input-box {
   margin-top: 30px;
   @apply border-b-2;
 }
+
 .input-box .field {
   width: 100%;
   background: transparent;
@@ -36,11 +38,11 @@ form .input-box {
   color: black;
   margin-top: 20px;
 }
+
 .input-box .field.mess {
   resize: none;
   @apply border-b-2;
 }
-
 form button {
   width: 100%;
   border: none;
@@ -50,6 +52,7 @@ form button {
   font-weight: 500;
   @apply p-5;
 }
+
 form button {
   background: blue;
 }
