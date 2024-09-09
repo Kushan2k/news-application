@@ -93,11 +93,6 @@ function NewsCard({ news }) {
       }
     })
 
-
-
-
-
-
   }, [])
 
   useEffect(() => {

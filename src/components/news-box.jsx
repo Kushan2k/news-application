@@ -52,7 +52,9 @@ function NewsBox() {
         }
       })
       try {
-        const resp = await axios.get(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${API_KEY}`)
+        // const resp = await axios.get(`https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=us&limit=100`)
+        // const resp = await axios.get(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${API_KEY}`)
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
 
 
         const data = resp.data
