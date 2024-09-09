@@ -3,7 +3,7 @@ import Catagories from '../components/catagories'
 import NewsBox from '../components/news-box'
 import FavoriteBox from '../components/fav-box'
 
-function HomePage() {
+function HomePage() { 
   return (
     <div className="p-5 grid grid-cols-1 md:grid-cols-5 mt-5 gap-5 ">
 
