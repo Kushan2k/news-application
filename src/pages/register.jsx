@@ -22,7 +22,7 @@ function RegisterPage() {
     return data.password === data.confirmPassword
   }, {
     message: 'Passwords do not match',
-  })
+  })   
 
   const { register, reset, clearErrors, handleSubmit, formState: { isSubmitting, errors } } = useForm({
     resolver: zodResolver(regSchema),
