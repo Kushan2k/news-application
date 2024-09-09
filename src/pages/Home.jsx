@@ -16,7 +16,6 @@ function HomePage() {
       <div className='hidden lg:flex'>
         <FavoriteBox />
       </div>  
-
     </div>
   )
 }
