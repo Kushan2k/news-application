@@ -55,7 +55,7 @@ function RegisterPage() {
       toast.error(error.message)
     } finally {
       reset()
-      clearErrors()
+      clearErrors() 
     }
   }
 
