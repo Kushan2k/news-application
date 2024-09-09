@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import "../contact.css";
+import "../contact.css";   
 
 const Contact = () => {
   const form = useForm();
