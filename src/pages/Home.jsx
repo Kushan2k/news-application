@@ -12,7 +12,7 @@ function HomePage() {
       </div>
       <div className='md:col-span-4 lg:col-span-3'>
         <NewsBox />
-      </div>
+      </div> 
       <div className='hidden lg:flex'>
         <FavoriteBox />
       </div>  
