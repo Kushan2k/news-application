@@ -8,7 +8,6 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
 
-
     data.access_key = "eff4f9b0-bc7b-4b46-8af0-05b507b2c852";
 
     const res = await fetch("https://api.web3forms.com/submit", {
