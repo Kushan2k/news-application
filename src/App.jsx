@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import News from './pages/News'
 
 function App() {
+  
   const [count, setCount] = useState(0)
   return (
     <Routes >
@@ -21,6 +22,7 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
     </Routes>
   )
+  
 }
 
 export default App;
