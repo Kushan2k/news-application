@@ -1,18 +1,93 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { auth, firestore } from '../firebase.config';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AlertCircleIcon } from 'lucide-react';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function FavoriteBox() {
+
+  const [favourites, setFavourites] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
+
+  const fetch_fav = async () => {
+
+
+    const ref = doc(firestore, 'favourites', user.uid)
+
+    const data = await getDoc(ref)
+
+    if (data.exists()) {
+      setFavourites(data.data().favourites)
+    }
+
+    onSnapshot(ref, (doc) => {
+      setFavourites(doc.data().favourites)
+    })
+    setLoading(false)
+
+
+  }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+
+
+    fetch_fav()
+
+  }, [user])
+
+  // useEffect(() => [
+  //   fetch_fav()
+  // ], [user])
+
   return (
     <div>
       <h2 className='text-3xl uppercase font-bold text-end'>My Favourites</h2>
-      <div className="w-full mt-5">
-        <ul className="space-y-3 flex items-center justify-end flex-col">
-          <ListItem text="It is a long established fact reader" />
-          <ListItem text="It is a long established fact reader" />
-          <ListItem text="The point of using Lorem Ipsum" />
-          <ListItem text="There are many variations of passages" />
-          <ListItem text="If you are going to use a of Lorem" />
-        </ul>
-      </div>
+
+      {
+        user ? (
+          <div className="w-full mt-5">
+            {
+              loading && (
+                <div className='w-full h-20 flex items-center justify-center'>
+                  <svg className="animate-spin border-b-2 rounded-full border-green-600 h-5 w-5 " viewBox="0 0 24 24">
+
+                  </svg>
+                </div>
+              )
+            }
+            {
+              !loading && favourites.length === 0 && (
+                <p className='text-center font-semibold capitalize text-yellow-500'>No favourites found!</p>
+              )
+            }
+            <ul className="space-y-3 flex items-center justify-end flex-col">
+              {
+                !loading && favourites.length > 0 && favourites.map((news, index) => (
+
+                  <ListItem key={index} text={news.news.title} />
+
+                ))
+              }
+            </ul>
+          </div>
+        ) : (
+          <div className="mt-5 w-full">
+            <p className='text-yellow-600 text-md'>You need to login first to view your favourites</p>
+            <p>you can login in <Link to={'/login'} className='text-blue-600'>Here</Link></p>
+          </div>
+        )
+      }
     </div>
 
   )

@@ -4,8 +4,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase.config';
+import { auth, firestore } from '../firebase.config';
 import { toast } from 'react-toastify';
+import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
 
 function RegisterPage() {
   const regSchema = z.object({
@@ -41,6 +42,12 @@ function RegisterPage() {
 
         toast.success('User registered successfully')
         router('/login')
+
+
+        await setDoc(doc(firestore, 'favourites', user.uid), {
+          favourites: []
+        })
+
       } else {
         throw new Error('User not found')
       }
@@ -66,6 +73,15 @@ function RegisterPage() {
       const user = resp.user
       if (user) {
         localStorage.setItem('user', JSON.stringify(user))
+
+        const ref = doc(firestore, 'favourites', user.uid)
+        const fav = await getDoc(ref)
+
+        if (!fav.exists()) {
+          await setDoc(ref, {
+            favourites: []
+          })
+        }
         toast.success('User logged in successfully')
         router('/')
       } else {
@@ -200,7 +216,7 @@ function RegisterPage() {
           <div className="mt-4 text-sm text-gray-600 text-center">
             <p>or with email</p>
           </div>
-          <form onSubmit={handleSubmit(handleRegister)} className="space-y-4">
+          <form onSubmit={handleSubmit(handleRegister)} className="space-y-4 w-full bg-transparent">
 
             <div>
               <label className="block text-sm font-medium text-gray-700">Full Name</label>
