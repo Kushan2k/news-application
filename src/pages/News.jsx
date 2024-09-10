@@ -26,7 +26,12 @@ function News() {
       try {
 
 
-        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${newsID}&apiKey=${API_KEY}`)
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${newsID}`, {
+          headers: {
+            'Authorization': API_KEY
+          }
+        }
+        )
 
         const d = resp.data
         if (d.status === 'ok') {

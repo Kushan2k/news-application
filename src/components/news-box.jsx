@@ -27,7 +27,12 @@ function NewsBox() {
     }
     try {
       setLoading(true)
-      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=${API_KEY}`)
+      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}`, {
+        headers: {
+          'Authorization': API_KEY
+        }
+      }
+      )
 
 
       const data = resp.data
@@ -63,7 +68,11 @@ function NewsBox() {
       })
       try {
 
-        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us`, {
+          headers: {
+            'Authorization': API_KEY
+          }
+        })
 
 
         const data = resp.data
