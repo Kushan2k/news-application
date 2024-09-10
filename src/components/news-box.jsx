@@ -27,11 +27,7 @@ function NewsBox() {
     }
     try {
       setLoading(true)
-      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=${API_KEY}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=${API_KEY}`)
 
 
       const data = resp.data
@@ -67,11 +63,7 @@ function NewsBox() {
       })
       try {
 
-        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`, {
-          headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
-        })
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
 
 
         const data = resp.data
