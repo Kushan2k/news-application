@@ -24,7 +24,7 @@ function Navbar() {
     }
   }
 
-  const active = 'bg-blue-700  rounded md:bg-transparent md:text-blue-700'
+  const active = 'bg-blue-700 text-white hover:bg-blue-600  rounded md:bg-transparent md:text-blue-700'
 
   const [loggedin, SetLoggedIn] = useState(false)
 
@@ -49,7 +49,7 @@ function Navbar() {
   }, [])
   return (
 
-    <nav className="bg-white  px-2 sm:px-4 py-2.5 dark:bg-gray-800 h-16">
+    <nav className="bg-white mb-10 md:mb-0  px-2 sm:px-4 py-2.5 dark:bg-gray-800 h-16">
       <div className="container relative flex flex-wrap justify-between items-center mx-auto md:pt-5">
         <a href="/" className="flex items-center">
           <span className="self-center flex items-center gap-2 text-xl font-semibold whitespace-nowrap dark:text-white">
@@ -67,7 +67,7 @@ function Navbar() {
             <li>
               <Link
                 to="/"
-                className={`block  py-2 pr-4 pl-3 text-black  md:p-0 dark:text-white ${pathname.pathname === '/' ? active : ''}`}
+                className={`block  py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/' ? active : ''}`}
                 aria-current="page"
               >
                 Home
@@ -76,7 +76,7 @@ function Navbar() {
             <li>
               <Link
                 to="/about"
-                className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/about' ? active : ''}`}
+                className={`block py-2  pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/about' ? active : ''}`}
               >
                 About
               </Link>
@@ -87,7 +87,7 @@ function Navbar() {
                   <li>
                     <Link
                       to="/login"
-                      className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/login' ? active : ''}`}
+                      className={`block py-2  pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/login' ? active : ''}`}
                     >
                       Login
                     </Link>
@@ -95,7 +95,7 @@ function Navbar() {
                   <li>
                     <Link
                       to="/register"
-                      className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/register' ? active : ''}`}
+                      className={`block py-2 pr-4  pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/register' ? active : ''}`}
                     >
                       Register
                     </Link>
@@ -106,7 +106,7 @@ function Navbar() {
             <li>
               <Link
                 to="/contact"
-                className={`block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/contact' ? active : ''}`}
+                className={`block py-2 pr-4 pl-3  text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${pathname.pathname === '/contact' ? active : ''}`}
               >
                 Contact
               </Link>
