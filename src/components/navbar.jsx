@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../firebase.config'
 import { toast } from 'react-toastify'
-import { LogOut } from 'lucide-react'
+import { LogOut, Plus } from 'lucide-react'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -49,11 +49,12 @@ function Navbar() {
   }, [])
   return (
 
-    <nav className="bg-white border  px-2 sm:px-4 py-2.5 dark:bg-gray-800 h-16">
-      <div className="container flex flex-wrap justify-between items-center mx-auto md:pt-5">
+    <nav className="bg-white  px-2 sm:px-4 py-2.5 dark:bg-gray-800 h-16">
+      <div className="container relative flex flex-wrap justify-between items-center mx-auto md:pt-5">
         <a href="/" className="flex items-center">
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            News Application
+          <span className="self-center flex items-center gap-2 text-xl font-semibold whitespace-nowrap dark:text-white">
+            <img src='https://png.pngtree.com/png-vector/20221127/ourmid/pngtree-digital-media-play-button-gradient-color-hexagon-marketing-agency-mobile-app-png-image_6482499.png' width={50} height={50} alt='logo' loading='lazy' />
+            <span className='font-bold'>NewsPulse</span> <Plus />
           </span>
         </a>
 
