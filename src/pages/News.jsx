@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useNavigation, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
 function News() {
 

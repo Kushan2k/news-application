@@ -8,7 +8,7 @@ import { createUniqueIdentifier } from '../utils'
 
 function NewsCard({ news }) {
   // news.url
-  console.log(news)
+  // console.log(news)
   const [loading, SetLoading] = useState(false)
   const [user, setUser] = useState(null)
 
@@ -120,7 +120,7 @@ function NewsCard({ news }) {
     <div className="container mt-5 grid grid-cols-1 gap-8 my-auto ">
       <div className="relative flex-col bg-clip-border rounded-xl bg-transparent text-gray-700 shadow-none grid gap-2 item sm:grid-cols-2">
         <div className="relative bg-clip-border  overflow-hidden bg-white text-gray-700 shadow-lg m-0">
-          <img src={news?.urlToImage || ''} alt="Revolutionizing Our Production Process" className="object-cover w-full h-full" />
+          <img loading='lazy' src={news?.urlToImage || ''} alt="Revolutionizing Our Production Process" className="object-cover w-full h-full" />
 
         </div>
         <div className="p-6 px-2 sm:pr-6 sm:pl-4 relative">

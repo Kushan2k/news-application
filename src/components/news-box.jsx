@@ -14,31 +14,41 @@ function NewsBox() {
 
   const [news, setNews] = useState([])
   const [loading, setLoading] = useState(true)
-  const [favourites, setFavourites] = useState([])
   const [user, setUser] = useState(null)
+  const [text, setText] = useState('')
 
 
-  const fethc_fav = async () => {
 
+  async function seach() {
+
+    if (!text || text === '') {
+      toast.warn('Please enter a search term')
+      return
+    }
     try {
-      const ref = doc(firestore, 'favourites', user.uid)
+      setLoading(true)
+      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&apiKey=${API_KEY}`)
 
-      const data = await getDoc(ref)
 
-      if (data.exists()) {
-        setFavourites(data.data().favourites)
+      const data = resp.data
+
+      if (data.status === 'ok') {
+
+        // console.log(data)
+        let ar = []
+        data.articles.forEach(article => {
+          ar.push(article)
+        })
+
+        setNews(ar)
       }
 
-      onSnapshot(ref, (doc) => {
-        setFavourites(doc.data().favourites)
-      })
-
     } catch (error) {
-      toast.warn(error.message, {
-        icon: <AlertCircleIcon color='yellow' />
-      })
+      console.log(error)
+      toast.warn('Failed to fetch news')
+    } finally {
+      setLoading(false)
     }
-
   }
 
 
@@ -52,8 +62,7 @@ function NewsBox() {
         }
       })
       try {
-        // const resp = await axios.get(`https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=us&limit=100`)
-        // const resp = await axios.get(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${API_KEY}`)
+
         const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
 
 
@@ -89,6 +98,12 @@ function NewsBox() {
         <Newspaper size={35} />
         Latest News
       </h1>
+      <div className='mt-5'>
+        <div className="flex items-center justify-center gap-4">
+          <input type="text" value={text} onChange={(e) => setText(e.target.value)} className="p-2 w-96 border-2 border-gray-300 rounded-md" placeholder="Search" />
+          <button onClick={seach} className="bg-black text-white p-2 rounded-md">Search</button>
+        </div>
+      </div>
       {
         loading && (
           <div className="flex w-full items-center justify-center h-20 mt-10">
