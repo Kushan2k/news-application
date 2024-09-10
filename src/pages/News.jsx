@@ -6,7 +6,7 @@ import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { auth, firestore } from '../firebase.config'
 import { arrayRemove, arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
-import { createUniqueIdentifier } from '../utils'
+import { convertISOStringToReadableTime, createUniqueIdentifier } from '../utils'
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
 function News() {
@@ -26,7 +26,7 @@ function News() {
       try {
 
 
-        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${newsID}`, {
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${newsID}&sortBy=publishedAt`, {
           headers: {
             'Authorization': API_KEY
           }
@@ -214,7 +214,7 @@ function HorNewsCard({ article }) {
           )
         }
       </div>
-      <small className='text-gray-500'>{article.publishedAt.split('T')[0]}</small>
+      <small className='text-gray-500'>{convertISOStringToReadableTime(article?.publishedAt)}</small>
       <br />
       <small className='text-gray-600 capitalize font-semibold'>{article.author}</small>
       <h1 className="text-xl font-bold">{article.title}</h1>

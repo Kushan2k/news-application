@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react'
 import { auth, firestore } from '../firebase.config'
 import { toast } from 'react-toastify'
 import { onAuthStateChanged } from 'firebase/auth'
-import { createUniqueIdentifier } from '../utils'
+import { convertISOStringToReadableTime, createUniqueIdentifier } from '../utils'
 
 function NewsCard({ news }) {
   // news.url
@@ -130,7 +130,7 @@ function NewsCard({ news }) {
             <div>
               <p className="block antialiased font-sans text-base font-light leading-relaxed text-blue-gray-900 mb-0.5  capitalize">{news?.author
                 || ""}</p>
-              <p className="block antialiased font-sans text-sm leading-normal text-gray-700 font-normal">{news?.publishedAt}</p>
+              <p className="block antialiased font-sans text-sm leading-normal text-gray-700 font-normal">{convertISOStringToReadableTime(news?.publishedAt)}</p>
             </div>
           </div>
           {

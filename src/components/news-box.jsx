@@ -27,7 +27,7 @@ function NewsBox() {
     }
     try {
       setLoading(true)
-      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}`, {
+      const resp = await axios.get(`https://newsapi.org/v2/everything?q=${text}&sortBy=publishedAt`, {
         headers: {
           'Authorization': API_KEY
         }
@@ -68,7 +68,7 @@ function NewsBox() {
       })
       try {
 
-        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us`, {
+        const resp = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt`, {
           headers: {
             'Authorization': API_KEY
           }
