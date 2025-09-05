@@ -1,3 +1,4 @@
+not maintained
 # React + Vite
 
 ##Projct For University
