@@ -43,4 +43,26 @@ cd news-application
 # Install dependencies
 npm install
 # or
-yarn install
+yarn install ```
+
+## Projecut Structure
+
+news-application/
+├── public/             # Static assets
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Page components
+│   ├── styles/         # Global styles
+│   └── main.jsx        # App entry point
+├── .env.sample         # Example environment variables
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+└── README.md
+
+## Configuration
+
+```bash
+VITE_NEWS_API_KEY=your_api_key_here
+
+```
