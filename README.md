@@ -1,11 +1,46 @@
-not maintained
-# React + Vite
+# 📰 News Application
 
-##Projct For University
+A modern, responsive **React + Vite** application to explore the latest news.  
+This was built as a **University project** and demonstrates a clean UI, API integration, and deployment workflow.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 [Live Demo](https://news-application-mu-orpin.vercel.app)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+
+- Browse the latest news by category  
+- Responsive design (mobile & desktop)  
+- Fast builds & hot reload with **Vite**  
+- Clean codebase with **ESLint** rules  
+- Deployed on **Vercel**  
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 18 + Vite** – Frontend framework & bundler  
+- **Tailwind CSS** – Utility-first styling  
+- **ESLint** – Code linting  
+- **Vercel** – Hosting & deployment  
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js v16+  
+- npm or yarn  
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/Kushan2k/news-application.git
+cd news-application
+
+# Install dependencies
+npm install
+# or
+yarn install
