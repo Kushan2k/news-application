@@ -3,7 +3,6 @@
 A modern, responsive **React + Vite** application to explore the latest news.  
 This was built as a **University project** and demonstrates a clean UI, API integration, and deployment workflow.
 
-🌐 [Live Demo](https://news-application-mu-orpin.vercel.app)
 
 ---
 
