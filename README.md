@@ -43,10 +43,12 @@ cd news-application
 # Install dependencies
 npm install
 # or
-yarn install ```
+yarn install
+
+```
 
 ## Projecut Structure
-
+```bash
 news-application/
 ├── public/             # Static assets
 ├── src/
@@ -59,6 +61,8 @@ news-application/
 ├── vite.config.js
 ├── tailwind.config.js
 └── README.md
+
+```
 
 ## Configuration
 
